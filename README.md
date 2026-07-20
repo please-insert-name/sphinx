@@ -1,7 +1,7 @@
 <img src="Logo-borderless.png" align="left" width="300" alt="SphiNx Logo">
 <br clear="left">
 
-This is the entry point for Project "SphiNx" (In german: "[Sp]rachmodelle im [h]ybriden [i]ndustriellen [N]utzungskonte[x]t). 
+This is the entry point for Project [SphiNx - _Sp_rachmodelle im _h_ybriden _i_ndustriellen _N_utzungskonte_x_t](https://www.forschungsstiftung.bayern.de/projekt/sprachmodelle-im-hybriden-industriellen-nutzungskontext-sphinx/). 
 
 # Objectives
 This project investigates the use of large language models in industrial settings, focusing on preserving and sharing expert knowledge while helping integrate lower-skilled workers and non-native speakers. The main technical challenges are largely solved; the harder problems are data protection, liability, and user acceptance. The project addresses these socio-technical issues and aims to deliver an AI chatbot demonstrator that provides expert knowledge in a way that is privacy-compliant, legally sound, and accessible (in language and complexity). Project results will largely be released as open source to benefit small and medium-sized enterprises.
