@@ -1,4 +1,4 @@
-<img src="Logo.png" align="left" width="120" alt="SphiNx Logo">
+<img src="Logo-borderless.png" align="left" width="120" alt="SphiNx Logo">
 <br clear="left">
 
 This is the entry point for Project "SphiNx" (In german: "[Sp]rachmodelle im [h]ybriden [i]ndustriellen [N]utzungskonte[x]t). 
@@ -8,6 +8,7 @@ This project investigates the use of large language models in industrial setting
 
 # Associated Repositories
 - [cc-harness](https://github.com/please-insert-name/cc-harness)
+Content Creator Harness: A skill set for knowledge management and efficient AI co-working for content creation and conceptional work.
 
 # Disclaimer
 This project is supported by "Bavarian Transformation and Research Foundation", Grant AZ-1648-24 ("SphiNx: Sprachmodelle im hybriden industriellen Nutzungskontext")
