@@ -1,4 +1,4 @@
-<img src="Logo.png" align="left" width="120" alt="SphiNx Logo">
+<img src="Logo.png" align="left" width="300" alt="SphiNx Logo">
 <br clear="left">
 
 This is the entry point for Project "SphiNx" (In german: "[Sp]rachmodelle im [h]ybriden [i]ndustriellen [N]utzungskonte[x]t). 
