@@ -1,0 +1,54 @@
+ABSTRACT – Hybride, umkehrbare Pseudonymisierung personenbezogener Daten in Texten
+=================================================================================
+Referenzen in [eckigen Klammern] verweisen auf quellen.txt.
+
+Große Sprachmodelle eignen sich gut für die Textverarbeitung. Personenbezogene oder vertrauliche
+Daten dürfen aber nicht unkontrolliert an externe Modelle gehen (DSGVO, Art. 4 Nr. 5 und Art. 9
+[27]). Der hier entwickelte Skill folgt dem Muster „lokal verschleiern – extern verarbeiten – lokal
+zurückführen“ [3][21]. Sensible Angaben werden auf dem eigenen System durch typisierte Platzhalter
+ersetzt, z. B. [PERSON_1] oder [IBAN_1]. Das nachgelagerte Modell sieht nur den pseudonymisierten
+Text. Seine Antwort wird anschließend lokal re-identifiziert.
+
+Die Erkennung kombiniert drei Stufen, wie es Literatur und vorhandene Werkzeuge als Stand der
+Technik beschreiben [2][7][20]:
+(1) Regeln mit Prüfsummen und Kontextwörtern für strukturierte Daten [23][15][19]. Geprüft
+    werden IBAN (MOD 97), Kreditkarten (Luhn), Steuer-ID (ISO 7064), Sozialversicherungsnummer,
+    Telefon, E-Mail, Adressen, IP-Adressen, Kfz-Kennzeichen und Zugangsdaten [28–31]. Dazu
+    kommt eine Wortliste für Gesundheitsbegriffe nach Art. 9 DSGVO [7].
+(2) Zero-Shot-Namenserkennung mit GLiNER [9][25] für Personen, Organisationen, Orte und Diagnosen.
+(3) Ein lokales Sprachmodell über Ollama [26]. Es entscheidet anhand einer Richtlinie im Prompt,
+    welche Angaben im Kontext schützenswert sind [5][12]. Die Kandidaten aus (1) und (2) erhält es
+    als Hinweise, die es bestätigen oder ergänzen kann [11].
+Überlappende Treffer werden zusammengeführt. Regeltreffer haben Vorrang, sonst gewinnt der
+längste Treffer [2]. Varianten derselben Entität, etwa mit Titel, nur mit Nachnamen oder mit
+Initiale, erhalten denselben Platzhalter. So bleibt für das nachgelagerte Modell erkennbar, wer
+gemeint ist [2][15]. Einmal erkannte Werte werden im ganzen Dokument ersetzt [13]. Danach prüft
+das Sprachmodell den pseudonymisierten Text als Gegenspieler noch einmal auf verbliebene
+Rückschlussmöglichkeiten. Dazu zählen Quasi-Identifikatoren wie Alter, Geburtsort oder
+Familienstand [5][6][4].
+
+Die Rückführung arbeitet zweistufig. Ein unverändertes eigenes Dokument wird über einen
+Dokument-Hash zeichengenau wiederhergestellt. In fremden Texten, etwa LLM-Antworten, werden auch
+leicht veränderte Platzhalter erkannt. Ersetzt wird aber nur, was nachweislich im Tresor steht.
+Erfundene Platzhalter bleiben stehen und werden gemeldet [1][3]. Die Zuordnung liegt in einem
+Tresor außerhalb des Projekts, optional mit AES-256-GCM verschlüsselt, mit Ablaufdatum [4][15].
+Die Skriptausgaben enthalten keine Originalwerte [18].
+
+Bewertet wurde nach dem Vorbild des Text Anonymization Benchmark [8]. Die Ground Truth
+unterscheidet Pflicht-, Grenzfall- und Negativeinträge, außerdem werden Konsistenz, Round-Trip und
+die Rückführung echter LLM-Antworten geprüft. Die Testfälle enthalten bewusst mehrdeutige Namen
+und Kontextfälle [10]. Auf dem Beispielsatz und einem nicht abgestimmten Kontrollsatz erkannte der
+Skill alle Pflichtangaben (58/58 bzw. 26/26). Keine Negativangabe wurde fälschlich maskiert, die
+Präzision lag bei 1,0, alle LLM-Antworten wurden vollständig zurückgeführt. Die Gesamtkette
+Pseudonymisierung → externe Verarbeitung → Rückführung lief ohne Datenleck: 93/93 Platzhalter
+wurden korrekt zurückgeführt. Die verbliebenen Schwächen liegen im Verarbeitungsschritt. Platzhalter
+verbergen Sprache und Wortart des Originalwerts. Werden sie als Beispiel genannt, ersetzt die
+Rückführung auch diese Stelle. Dafür gibt es eigene Schreibregeln in SKILL.md.
+
+Grenzen: Die Datensätze sind klein, synthetisch und vom Entwickler selbst erstellt. Keine
+automatische Erkennung ist vollständig, daher wird eine menschliche Stichprobe empfohlen [10][20].
+Pseudonymisierte Daten bleiben personenbezogen [27]. Das Erkennungsmodell selbst sieht die
+Originaldaten und muss deshalb auf einem vertrauenswürdigen System laufen. Surrogate, also
+realistische Ersatzwerte, versprechen mehr Nutzbarkeit [4][14]. Formaterhaltende Verschlüsselung
+wäre eine weitere Option [3]. Beide wurden zugunsten eindeutig rückführbarer Platzhalter bewusst
+nicht eingesetzt.

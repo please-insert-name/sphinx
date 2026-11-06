@@ -1,0 +1,7 @@
+# Python >= 3.10
+gliner>=0.2.30
+transformers>=4.51,<5      # transformers 5.x scheitert an der Konvertierung des mDeBERTa-SentencePiece-Tokenizers
+torch>=2.2
+sentencepiece
+protobuf>=7.36.1
+cryptography>=42           # AES-256-GCM für verschlüsselte Tresore

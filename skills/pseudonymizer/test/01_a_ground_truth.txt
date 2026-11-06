@@ -1,0 +1,162 @@
+GROUND TRUTH zu example.txt
+===========================
+
+Format je Absatz (Nummerierung = Reihenfolge in example.txt):
+  [KATEGORIE] "Originaltext"
+Markierungen:
+  (!)  Grenzfall / Ermessensfrage, siehe Anmerkung
+  (-)  darf NICHT maskiert werden (Negativ-Check)
+
+Kategorien: PERSON, ORG, ADRESSE, ORT, DATUM, TELEFON, EMAIL, IBAN, KARTE,
+            ID (Kennnummern), GESUNDHEIT, CREDENTIAL, NETZ (IP/Host/URL),
+            KFZ, FINANZ (Geschäftszahlen), SONST (Quasi-Identifikator)
+
+Hinweis zur Konsistenz: Dieselbe Entität muss überall denselben Platzhalter
+erhalten (z. B. "Harald Schneider" in Absatz 1 immer <PERSON_1>).
+
+
+--- 1 ---------------------------------------------------------------
+[PERSON]   "Dr. Harald Schneider"
+[ADRESSE]  "Winkelgasse 12 in Berlin"  (beide Vorkommen)
+[DATUM]    "01.12.2026"                (!) Lieferdatum, nicht personenbezogen;
+                                       optional, im Zweifel behalten
+[ORG]      "Harald Schneider GmbH"     (enthält Personennamen; als ORG maskieren,
+                                       nicht den Namen darin einzeln ersetzen)
+[KARTE]    "Visa 1233 3423 2230 12"
+[PERSON]   "Herr Schneider"            (gleiche Entität wie oben)
+[SONST]    "72 Jahre alt"              (!) Alter; zusammen mit Namen personenbezogen
+[TELEFON]  "0177/3344685"
+[EMAIL]    "sh@harald-schneider-gmbh.de"
+Anmerkung: Der Ort "Berlin" allein ist unkritisch, bleibt Teil der Adresse.
+
+
+--- 2 ---------------------------------------------------------------
+[PERSON]      "Anja Köhler"
+[PERSON]      "Frau Köhler"            (gleiche Entität)
+[DATUM]       "14.03.1988"             (Geburtsdatum)
+[ID]          "40817"                  (Personalnummer)
+[ID]          "65 929 970 489"         (Steuer-ID)
+[ID]          "12 140388 K 123"        (Sozialversicherungsnummer)
+[FINANZ]      "4.250 Euro brutto"      (Gehalt, personenbezogen)
+[IBAN]        "DE89 3704 0044 0532 0130 00"
+[ORG/ORT]     "Commerzbank Köln"       (!) Bank ist öffentlich, mit IBAN aber
+                                       Bezug herstellbar; optional
+[GESUNDHEIT]  "wegen einer Bandscheiben-OP krankgeschrieben"
+[DATUM]       "02.09."                 (!) Beginn der Krankschreibung; im Kontext
+                                       Gesundheitsdaten, daher maskieren
+
+
+--- 3 ---------------------------------------------------------------
+[ID]          "#48213"                 (-) Ticketnummer, intern, nicht personen-
+                                       bezogen; behalten
+[PERSON]      "Murat Yilmaz"
+[EMAIL]       "murat.yilmaz@web.de"
+[TELEFON]     "+49 151 23456789"
+[CREDENTIAL]  "myilmaz88"              (Benutzername)
+[CREDENTIAL]  "Sommer2024!"            (Passwort, IMMER maskieren)
+[NETZ]        "87.123.45.201"          (IP-Adresse)
+[ADRESSE]     "Kastanienallee 7a, 80331 München"
+[ID]          "KV-2023-0099142"        (Vertragsnummer)
+[PERSON]      "Herr"/"Sein"/"Er"       (-) Pronomen nicht maskieren
+
+
+--- 4 ---------------------------------------------------------------
+[PERSON]      "Dr. Lena Fuchs"         (Fuchs = auch Tier; trotzdem Name)
+[DATUM]       "Dienstag, den 17. Februar 2026 um 10:30 Uhr"
+                                       (!) Arzttermin = Gesundheitskontext; maskieren
+[ADRESSE]     "Marktplatz 3, 50667 Köln"  (!) Praxisadresse, öffentlich; optional.
+                                       Die Praxis identifiziert aber den Fachbereich
+[ID]          "A123456789"             (Versichertennummer)
+[ORG]         "AOK Rheinland"          (!) Krankenkasse; mit Versichertenbezug
+                                       maskieren
+[GESUNDHEIT]  "Diabetes-Behandlung"
+[PERSON]      "Dr. Peter Brandt"
+[SONST]       "Allgemeinmedizin"       (-) Fachgebiet, nicht personenbezogen
+
+
+--- 5 ---------------------------------------------------------------
+[ORG]      "Nordlicht Logistik GmbH"
+[ADRESSE]  "Hafenstraße 45, 20457 Hamburg"
+[ID]       "HRB 123456"                (Handelsregister; Hamburg gehört dazu)
+[PERSON]   "Jens Hansen"
+[ORG]      "Brenner & Söhne KG"        (beide Vorkommen)
+[ADRESSE]  "Industrieweg 9, 70173 Stuttgart"
+[ID]       "DE812345678"               (USt-IdNr.)
+[FINANZ]   "1,2 Mio. Euro pro Jahr"   (!) Geschäftsgeheimnis; maskieren
+[PERSON]   "Sabine Brenner"
+[TELEFON]  "0711 / 998 877-12"
+Anmerkung: "Frau" und "Geschäftsführer" bleiben stehen (Rollen, keine PII).
+           "Rahmenvertrag" (-) behalten.
+
+
+--- 6 ---------------------------------------------------------------
+[PERSON]   "Tobias Lang"               (Lang = auch Adjektiv; trotzdem Name)
+[KFZ]      "B-MK 4521"
+[ORT]      "A9 bei Leipzig"            (-) Autobahn und Region, kein Personenbezug;
+                                       behalten
+[DATUM]    "gestern gegen 16 Uhr"      (-) relativ, nicht identifizierend; behalten
+[ORG]      "Allianz"                   (!) Versicherer; optional
+[ID]       "SC-77-3321908"             (Schadensnummer)
+[PERSON]   "Martina Lang"              (Dritte; andere Person als Tobias Lang!)
+[TELEFON]  "030 5557781"
+[PERSON]   "seine Frau"                (-) keine Namensnennung, behalten
+Anmerkung: "Lang" in "Tobias Lang" und "Martina Lang" gehört zu zwei
+           verschiedenen Personen: <PERSON_1> und <PERSON_2>.
+
+
+--- 7 ---------------------------------------------------------------
+[PERSON]   "Sarah"                     (Vorname)
+[PERSON]   "John Miller"
+[ORG]      "Acme Corp"
+[ADRESSE]  "221B Baker Street, London NW1 6XE"
+[EMAIL]    "j.miller@acmecorp.co.uk"
+[ID]       "4500123987"                (PO-Nummer)
+[DATUM]    "30 November"               (!) Zahlungsziel; optional
+[EMAIL]    "john.miller.private@gmail.com"
+[GESUNDHEIT] "allergic to nuts"
+Anmerkung: "PayPal" (-) behalten. Mehrsprachigkeit: Sprache des
+           Platzhalters ist egal, Format bleibt gleich.
+
+
+--- 8 ---------------------------------------------------------------
+[DATUM]    "05.11.2026"                (-) Protokolldatum; behalten
+[PERSON]   "Katrin Vogel"              (Vogel = auch Tier; trotzdem Name)
+[PERSON]   "Ben Weber"
+[PERSON]   "Herr Weber"                (gleiche Entität wie Ben Weber)
+[PERSON]   "Ömer Demir"
+[FINANZ]   "von 8,4 auf 6,9 Mio. Euro"  (!) Umsatzzahlen; je nach Zweck
+[SONST]    "im Dezember in Elternzeit" (!) Lebensumstand; mit Name verknüpft,
+                                       maskieren
+[NETZ]     "db-prod-01.intern.beispiel-firma.de"
+[CREDENTIAL] "sk_live_51Hx9KqLmN0pQrStUvWxYz"  (API-Key, IMMER maskieren)
+Anmerkung: Rollen "Projektleitung", "Entwicklung", "Vertrieb" (-) behalten.
+
+
+--- 9 ---------------------------------------------------------------
+[PERSON]   "Frau Weiß"                 (Weiß = auch Farbe; trotzdem Name)
+[DATUM]    "1992"                      (!) Geburtsjahr; Quasi-Identifikator
+[ORT]      "Dresden"                   (!) Geburtsort; Quasi-Identifikator
+[SONST]    "alleinerziehend"           (!) Familienstand; sensibel
+[ORG]      "Sachsenbau AG"
+[SONST]    "nach sechs Monaten löschen"  (-) behalten
+Anmerkung: Die Kombination Jahr + Ort + Familienstand + Arbeitgeber
+           identifiziert; einzeln wäre jedes davon harmlos. Hier bewusst
+           als Test für "Kombinationsrisiko".
+
+
+--- 10 --------------------------------------------------------------
+Nichts maskieren.
+(-) "Hamburg", "8 Grad", "Rathausplatz", "24. November",
+    "Stadtreinigung", "www.hamburg.de"
+Erwartung: Ausgabe == Eingabe. Jede Maskierung hier ist ein False Positive.
+
+
+=====================================================================
+Bewertungsvorschlag
+- Pflicht (muss maskiert werden): alle Zeilen ohne (!) und ohne (-)
+  -> Recall = gefundene Pflicht-Stellen / alle Pflicht-Stellen
+- Negativ-Checks (-): jede Maskierung zählt als False Positive
+  -> Precision
+- Grenzfälle (!): nicht bewertet, nur protokolliert
+- Konsistenz: gleiche Entität -> gleicher Platzhalter; verschiedene
+  Entitäten (z. B. die zwei "Lang") -> verschiedene Platzhalter

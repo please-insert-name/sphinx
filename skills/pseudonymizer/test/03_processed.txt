@@ -1,0 +1,133 @@
+VERARBEITUNG VON pseudomized.txt – Zusammenfassungen und Action Points
+====================================================================
+Hinweis: Platzhalter wie [PERSON_1] wurden unverändert übernommen und können mit dem
+Pseudonymizer-Skill (restore) auf die Originalwerte zurückgeführt werden.
+
+
+--- Absatz 1: Kundenauftrag Lagerboxen ---------------------------------
+Zusammenfassung:
+Dr. [PERSON_1] hat eine Charge Lagerboxen bestellt. Liefertermin ist der 01.12.2026, geliefert
+wird an [ORG_1], [ADRESSE_1]. Abgerechnet wird über die Visa-Karte [KARTE_1]. Wegen des Alters
+des Kunden ([MERKMAL_1]) sollen Entladen und Einlagern übernommen werden.
+
+Action Points:
+- Auftrag anlegen und Lieferung zum 01.12.2026 an [ORG_1], [ADRESSE_1] einplanen.
+- Abrechnung über Visa [KARTE_1] veranlassen.
+- Zusatzleistung "Entladen und Einlagern" einplanen (Personal/Zeit für den Liefertermin).
+- Bei Rückfragen Herrn [PERSON_1] kontaktieren: [TELEFON_1] oder [EMAIL_1].
+
+
+--- Absatz 2: Korrektur der Gehaltsabrechnung ---------------------------
+Zusammenfassung:
+Die Gehaltsabrechnung für Frau [PERSON_2] (Personalnummer [ID_1]) muss korrigiert werden. Das
+Gehalt von [FINANZ_1] geht auf das Konto [IBAN_1] bei der Commerzbank Köln. Frau [PERSON_2] ist
+seit dem [DATUM_2] aus gesundheitlichen Gründen ([GESUNDHEIT_1] [GESUNDHEIT_2]) abwesend.
+
+Action Points:
+- Gehaltsabrechnung für Personalnummer [ID_1] korrigieren; Steuer-ID [ID_2] und SV-Nummer [ID_3]
+  prüfen.
+- Auszahlung von [FINANZ_1] auf [IBAN_1] sicherstellen.
+- Abwesenheit ab [DATUM_2] in der Abrechnung berücksichtigen (z. B. Entgeltfortzahlung prüfen).
+- Gesundheitsangaben vertraulich behandeln und nur an zuständige Stellen weitergeben (Art. 9 DSGVO).
+
+
+--- Absatz 3: Support-Ticket #48213 – Login-Problem --------------------
+Zusammenfassung:
+Der Kunde [PERSON_3] kann sich nicht mehr im Kundenportal anmelden (Benutzername [CREDENTIAL_1]).
+Er hat sein Passwort im Ticket im Klartext mitgeteilt. Letzter Login kam von IP [NETZ_1].
+Der Vertrag hat die Nummer [ID_4].
+
+Action Points:
+- Zugang zu Benutzer [CREDENTIAL_1] prüfen (Sperre, abgelaufenes Passwort, Login-Protokoll für
+  [NETZ_1]).
+- Passwort-Reset auslösen. Das im Ticket genannte Passwort gilt als kompromittiert und darf nicht
+  weiterverwendet werden.
+- Passwort aus dem Ticketsystem entfernen bzw. schwärzen lassen.
+- Kunden über [EMAIL_2] oder [TELEFON_2] informieren und künftig auf sichere Kanäle hinweisen.
+
+
+--- Absatz 4: Terminbestätigung Arztpraxis -----------------------------
+Zusammenfassung:
+Die Praxis von Dr. [PERSON_5] (Allgemeinmedizin) bestätigt Frau Dr. [PERSON_4] einen Termin am
+Dienstag, 17.02.2026, um 10:30 Uhr am [ADRESSE_3]. Sie soll die Unterlagen zur [GESUNDHEIT_3] und
+einen aktuellen Überweisungsschein mitbringen. Ihre Versichertennummer bei der AOK Rheinland lautet
+[ID_5].
+
+Action Points:
+- Termin 17.02.2026, 10:30 Uhr im Praxiskalender für [PERSON_4] eintragen bzw. bestätigt lassen.
+- (Patientin) Unterlagen zur [GESUNDHEIT_3] und Überweisungsschein mitbringen.
+
+
+--- Absatz 5: Rahmenvertrag [ORG_2] / [ORG_3] ---------------------------
+Zusammenfassung:
+[ORG_2] (Handelsregister Hamburg [ID_6], vertreten durch Geschäftsführer [PERSON_6]) und [ORG_3]
+(USt-IdNr. [ID_7]) schließen einen Rahmenvertrag über ein Auftragsvolumen von [GESCHAEFTSZAHL_1].
+Ansprechpartnerin bei [ORG_3] ist Frau [PERSON_7].
+
+Action Points:
+- Vertragsentwurf auf Vollständigkeit prüfen (Laufzeit, Konditionen, Kündigung fehlen im Auszug).
+- Unterschriften von [PERSON_6] und der Vertretung von [ORG_3] einholen.
+- [PERSON_7] (Durchwahl [TELEFON_3]) als Ansprechpartnerin im CRM hinterlegen.
+
+
+--- Absatz 6: Unfall mit Firmenwagen -----------------------------------
+Zusammenfassung:
+Der Fahrer [PERSON_8] hat gestern gegen 16 Uhr mit dem Firmenwagen [KFZ_1] einen Unfall auf der A9
+bei Leipzig verursacht. Es gab keine Verletzten. Die Allianz führt den Schaden unter [ID_8]. Sein
+Handy ist beschädigt.
+
+Action Points:
+- Seine Frau [PERSON_9] unter [TELEFON_4] informieren (dringend).
+- Schadensmeldung [ID_8] bei der Allianz weiterverfolgen, Unfallbericht und Fotos sammeln.
+- Fuhrparkmanagement informieren: Reparatur/Ersatzfahrzeug für [KFZ_1] organisieren.
+- Ersatzgerät für das beschädigte Diensthandy bereitstellen.
+
+
+--- Absatz 7: Rechnung an [ORG_4] (englisch) ----------------------------
+Zusammenfassung:
+[PERSON_10] wird gebeten, die Rechnung an [PERSON_11] bei [ORG_4], [ADRESSE_6] zu schicken (PO
+[ID_9]). Bezahlt wird bis 30. November per PayPal ([EMAIL_4]). [PERSON_11] hat einen
+gesundheitlichen Hinweis für das Catering beim Kickoff gegeben ([GESUNDHEIT_4]).
+
+Action Points:
+- Rechnung mit PO-Nummer [ID_9] an [EMAIL_3] senden ([PERSON_10]).
+- Zahlungseingang per PayPal bis 30. November überwachen.
+- Catering für den Kickoff entsprechend [GESUNDHEIT_4] anpassen; Information vertraulich behandeln.
+
+
+--- Absatz 8: Protokoll Teammeeting 05.11.2026 --------------------------
+Zusammenfassung:
+Anwesend waren [PERSON_12] (Projektleitung), [PERSON_13] (Entwicklung) und [PERSON_14] (Vertrieb).
+Thema war der Umsatzrückgang im dritten Quartal ([GESCHAEFTSZAHL_2]). [PERSON_13] ist bald
+abwesend ([MERKMAL_2]). Ein Zugangspasswort für den Server [NETZ_2] und ein API-Key
+([CREDENTIAL_3]) wurden offen geteilt.
+
+Action Points:
+- SOFORT: Passwort für [NETZ_2] ändern und API-Key [CREDENTIAL_3] widerrufen und neu ausstellen.
+- Geteilte Zugangsdaten aus Chat und Protokoll entfernen; Secrets künftig nur über einen
+  Passwortmanager teilen.
+- Vertretung und Übergabe für die Abwesenheit von [PERSON_13] planen.
+- Ursachen des Umsatzrückgangs analysieren und Maßnahmen ableiten (Verantwortlich: [PERSON_14] /
+  [PERSON_12]).
+
+
+--- Absatz 9: Absage einer Bewerbung -----------------------------------
+Zusammenfassung:
+Frau [PERSON_15] erhält eine Absage, weil die Stelle bereits besetzt ist. Das Schreiben nennt
+persönliche Merkmale aus dem Lebenslauf ([MERKMAL_3], [ORT_1], [MERKMAL_4]) sowie den
+letzten Arbeitgeber [ORG_5]. Die Daten werden nach sechs Monaten gelöscht.
+
+Action Points:
+- Absageschreiben überarbeiten: Persönliche Merkmale wie Geburtsjahr, Herkunft oder Familienstand
+  gehören nicht in eine Absage (AGG- und Diskriminierungsrisiko).
+- Löschung der Bewerbungsdaten in sechs Monaten terminieren.
+
+
+--- Absatz 10: Wetter und Stadtinformationen Hamburg -------------------
+Zusammenfassung:
+Für das Wochenende sind in Hamburg Regen und etwa 8 Grad angesagt. Der Weihnachtsmarkt am
+Rathausplatz öffnet am 24. November. Die Stadtreinigung bittet, Fahrräder nicht an den Zäunen
+abzustellen.
+
+Action Points:
+- Keine (reine Information).

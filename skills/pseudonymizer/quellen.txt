@@ -1,0 +1,181 @@
+QUELLEN – Pseudonymizer-Skill
+=============================
+Stand: 06.11.2026
+
+Legende zur Lesetiefe:
+  [V] Volltext/HTML-Fassung gelesen       [A] Abstract/Projektseite gelesen
+  [S] nur Suchergebnis-Auszug gesehen     [Z] nur über Zitat in einer anderen Quelle bekannt
+Legende zur Verwendung:
+  -> Was daraus in den Skill übernommen wurde (Datei in .claude/skills/pseudonymizer/scripts/pseudo/)
+
+
+A) WISSENSCHAFTLICHE ARBEITEN (arXiv)
+-------------------------------------
+
+[1] Gu, C.; Wan, H.; Hu, D.; Wang, H.; Gu, Z. (2026):
+    PromptGraph: Graph-Guided Prompt Sanitization for Balancing Privacy and Utility in LLM Inference.
+    arXiv:2607.10709.  https://arxiv.org/abs/2607.10709                                      [V]
+    -> restore.py: Platzhalter werden nur zurückgeführt, wenn der Schlüssel im Tresor existiert
+       und der Typ passt; erfundene/veränderte Platzhalter bleiben unaufgelöst und werden gemeldet
+       (kein "Raten" des ähnlichsten Werts). Zuordnungstabelle verbleibt lokal.
+
+[2] Owusu Agyemang, J.; Kponyo, J. J.; Amponsah, E.; Addo Boakye, G. M.; Obour Agyekum, K. O.-B. (2026):
+    LLM-Redactor: An Empirical Evaluation of Eight Techniques for Privacy-Preserving LLM Requests.
+    arXiv:2604.12064.  https://arxiv.org/abs/2604.12064                                      [V]
+    -> pipeline.py: dreistufige Erkennung (Regex für strukturierte Geheimnisse, NER für Namen/
+       Orte/Organisationen, lokales LM für semantische Sensitivität); Überlappungen nach Konfidenz
+       auflösen; domänenspezifische Recognizer (z. B. Personalnummern).
+    -> linking.py: stabile, typisierte Platzhalter – gleiche Werte erhalten denselben Platzhalter
+       (Koreferenz bleibt für das nachgelagerte LLM erhalten).
+    -> Abweichung: Die Arbeit empfiehlt, die Zuordnung nur im Arbeitsspeicher zu halten. Da der
+       Skill zeitversetzte Rückführung braucht, wird persistiert – dafür außerhalb des Projekts,
+       optional verschlüsselt, mit TTL.
+
+[3] Elmahallawy, M.; Shaaban, M.; Carroll, T. E. (2026):
+    Veil-Then-Reveal: Protecting PII Privacy via Reversible Pseudo-Anonymization in Zero-Trust
+    User–LLM Interaction.  arXiv:2610.22800.  https://arxiv.org/abs/2610.22800              [V, ca. 2/3]
+    -> Gesamtarchitektur: Erkennung und Zuordnung bleiben auf dem Gerät, nur pseudonymisierter Text
+       verlässt es; Rückführung lokal. Erkenntnis "Schutz ist durch den Detektions-Recall begrenzt"
+       -> Hybrid + Residual-Runde. Echo-Raten der Modelle (42–80 %) -> tolerante Rückführung.
+    -> Nicht übernommen: formaterhaltende Verschlüsselung (FF1) und Surrogate statt Platzhaltern.
+
+[4] Jathanna, S. V. (2026):
+    SurrogateShield: Beyond Redaction for High-Utility, Privacy-Preserving LLM Interactions.
+    arXiv:2606.29567.  https://arxiv.org/abs/2606.29567                                      [A]
+    -> vault.py: Zuordnung pro Sitzung verschlüsselt mit AES-256-GCM.
+    -> Kaskade Pattern -> Entity -> Kontext und Quasi-Identifikator-Gedanke (k-Anonymität)
+       als Begründung für die MERKMAL-Kategorie.
+    -> Nicht übernommen: Surrogate (Fake-Werte); auf Nutzerwunsch typisierte Platzhalter.
+
+[5] Staab, R.; Vero, M.; Balunović, M.; Vechev, M. (2024/2025):
+    Large Language Models are Advanced Anonymizers. ICLR. arXiv:2402.13846.
+    https://arxiv.org/abs/2402.13846                                                          [A]
+    -> llm.py / pipeline.py: LLM als Anonymisierer und als Gegenspieler (Inferenz-Angreifer).
+       Umgesetzt als Residual-Runde: das LLM prüft den bereits pseudonymisierten Text auf
+       verbliebene Rückschlussmöglichkeiten; Funde werden nachmaskiert.
+
+[6] Li, Z.; Wen, J.; Li, T. (2026): LLM Anonymization Against Agentic Re-Identification (AURA).
+    arXiv:2605.30848.  https://arxiv.org/abs/2605.30848                                      [A]
+    -> Begründung, Quasi-Identifikatoren (Alter, Geburtsjahr/-ort, Familienstand ...) als eigene
+       Kategorie MERKMAL zu erfassen und die Residual-Prüfung adversarial zu formulieren.
+
+[7] Deußer, T.; Sparrenberg, L.; Berger, A.; Hahnbück, M.; Bauckhage, C.; Sifa, R. (2025):
+    A Survey on Current Trends and Recent Advances in Text Anonymization.
+    arXiv:2508.21587.  https://arxiv.org/abs/2508.21587                                      [V]
+    -> Einordnung: Hybrid (ML + Regeln/Lexika) als Stand der Technik; offene Probleme
+       Quasi-Identifikatoren, Konsistenz/Koreferenz, Mehrsprachigkeit (Deutsch), Evaluation.
+       Lexikon für Gesundheits-/Statusbegriffe (regex_rules.py) folgt dem Hybrid-Muster
+       (Regeln + Wörterbücher), das die Survey für klinische Systeme beschreibt.
+
+[8] Pilán, I.; Lison, P.; Øvrelid, L.; Papadopoulou, A.; Sánchez, D.; Batet, M. (2022):
+    The Text Anonymization Benchmark (TAB): A Dedicated Corpus and Evaluation Framework for Text
+    Anonymization. Computational Linguistics. arXiv:2202.00443.
+    https://arxiv.org/abs/2202.00443                                                          [A]
+    -> evaluate.py: Bewertung auf Entitätsebene (Recall auf zu maskierende Angaben), Unterscheidung
+       Pflicht/Grenzfall/Negativ, Koreferenz-Konsistenz als eigene Prüfung.
+
+[9] Zaratiana, U.; Tomeh, N.; Holat, P.; Charnois, T. (2024):
+    GLiNER: Generalist Model for Named Entity Recognition using Bidirectional Transformer.
+    NAACL 2024. arXiv:2311.08526.  https://arxiv.org/abs/2311.08526                          [A]
+    -> ner.py: Zero-Shot-NER mit frei formulierten Labels; Modell urchade/gliner_multi_pii-v1
+       (PII-feinjustiert, u. a. Deutsch).
+
+[10] Singh, D.; Narayanan, S. (2025): Unmasking the Reality of PII Masking Models: Performance Gaps
+     and the Call for Accountability.  arXiv:2504.12308.  https://arxiv.org/abs/2504.12308    [A]
+     -> Testfall-Design: mehrdeutige Namen (Fuchs, Weiß, Vogel, Lang), Kontextabhängigkeit,
+        Mehrsprachigkeit; Hinweis auf Grenzen in SKILL.md.
+
+[11] Gunay et al. (2024): LLM-in-the-loop für kleine Modelle in der klinischen De-Identifikation.
+     arXiv:2412.10918.                                                                        [Z, via 7]
+     -> Idee, NER-Kandidaten dem LLM als Hinweise zur Verifikation/Ergänzung zu geben.
+
+[12] Liu et al. (2023): DeID-GPT. arXiv:2303.11032.                                          [Z, via 7]
+     -> Zero-Shot-De-Identifikation mit LLM-Prompt und Richtlinie (Policy im Prompt, llm.py).
+
+Gesichtet, aber nicht für die Umsetzung verwendet ([S]):
+  - PII-Bench: Evaluating Query-Aware Privacy Protection Systems. arXiv:2502.18545
+  - Anonymous-by-Construction: An LLM-Driven Framework for Privacy-Preserving Text. arXiv:2603.17217
+  - LOPSIDED – Semantically-Aware LLM Agent to Enhance Privacy in Conversational AI. arXiv:2510.27016
+  - Adaptive PII Mitigation Framework for Large Language Models. arXiv:2501.12465
+  - Privacy Preserving Prompt Engineering: A Survey. arXiv:2404.06001
+  - Protecting User Prompts via Character-Level Differential Privacy. arXiv:2603.26032
+  - Ben Cheikh Larbi, Burchardt, Roller: Anonymisierung klinischer Texte. arXiv:2209.00262
+
+
+B) WEITERE FACHLITERATUR (nicht arXiv)
+--------------------------------------
+
+[13] Baumgartner et al. (2024): Masketeer: An Ensemble-Based Pseudonymization Tool with Entity
+     Recognition for German Unstructured Medical Free Text. Future Internet 16(8):281.
+     https://www.mdpi.com/1999-5903/16/8/281                                                  [S]
+     -> linking.py: korpusweite Pseudonymisierung (Propagation: einmal erkannte Werte werden an
+        allen weiteren Stellen ersetzt); Ensemble-Gedanke.
+
+[14] Lohr, C.; Eder, E.; Hahn, U. (2021): Pseudonymisierung deutscher klinischer Berichte mit
+     typgleichen Surrogaten. Stud Health Technol Inform. doi:10.3233/SHTI210163                [S]
+     -> Einordnung (Surrogate vs. Platzhalter); nicht umgesetzt.
+
+
+C) SKILLS UND WERKZEUGE (aus der ersten Recherche)
+--------------------------------------------------
+
+[15] PII Shield – gregmos/PII-Shield (MIT).  https://github.com/gregmos/PII-Shield            [A]
+     -> Typisierte Platzhalter <TYP_N>, sitzungsweit konsistent; GLiNER als NER; länder-
+        spezifische Recognizer (u. a. DE); Zuordnung außerhalb des Plugin-/Projektordners mit
+        TTL (vault.py: ~/.pseudonymizer/vaults, purge); verschlüsselter Export mit AES-GCM und
+        scrypt-Schlüsselableitung; Rückführung schreibt in Datei und gibt nur den Pfad zurück
+        (Grundregel in SKILL.md); fehlender Tresor -> klarer Fehler statt stillem Überspringen.
+
+[16] data-anonymizer – dkyazzentwatwa/chatgpt-skills (bzw. majiayu000/claude-skill-registry).
+     https://agent-skills.md/skills/dkyazzentwatwa/chatgpt-skills/data-anonymizer              [S]
+     -> Strategien mask/redact vs. umkehrbar: --mode pseudo | redact.
+
+[17] anonymize-doc – digital-stoic-org/dstoic.
+     https://www.claudepluginhub.com/skills/digital-stoic-org-dstoic-dstoic/anonymize-doc        [S]
+     -> Bericht/Audit neben der Ausgabe (--report), mehrere Strategien.
+
+[18] PII Sanitizer – jorgealves/agent_skills (GPL-3.0).
+     https://agent-skills.md/skills/jorgealves/agent_skills/pii-sanitizer                       [A]
+     -> Grundsatz "keine Originalwerte in Ausgaben/Logs" (stdout nur Zähler und Pfade).
+
+[19] Sanitize PII – CUBETIQ/cubis-foundry.
+     https://www.skills.lc/CUBETIQ/cubis-foundry/                                               [S]
+     -> Auswahl der Musterkategorien (Kontakt, Finanzen, Kennungen, Zugangsdaten).
+
+[20] ai-redacting-data – lebsral/dspy-programming-not-prompting-lms-skills.
+     https://skillselion.com/skills/lebsral/dspy-programming-not-prompting-lms-skills/ai-redacting-data  [S]
+     -> Reihenfolge "erst Regex, dann LM"; Empfehlung menschlicher Stichprobe (SKILL.md, Grenzen).
+
+[21] anth-data-handling – ComeOnOliver/skillshub.
+     https://openskillindex.com/skills/comeonoliver-skillshub-anth-data-handling                [S]
+     -> Muster "vor dem API-Aufruf schwärzen, danach zurückführen".
+
+[22] recording – glebis/claude-skills.  https://claudeskills.info/skills/glebis/claude-skills/recording/  [S]
+     -> geprüft, nicht übernommen (maskiert nur die Anzeige, nicht Dateien).
+
+[23] Microsoft Presidio.  https://microsoft.github.io/presidio  ·  .../analyzer/languages       [A]
+     -> Kontextwörter zur Konfidenzerhöhung, Prüfsummen-Validatoren, Erkenntnis "Standard nur
+        Englisch, Deutsch erfordert eigene Recognizer" -> eigene deutsche Regeln in regex_rules.py.
+
+[24] Sammlung: malteos/awesome-anonymization-for-llms.
+     https://github.com/malteos/awesome-anonymization-for-llms                                 [S]
+
+
+D) MODELLE
+----------
+
+[25] GLiNER multi PII v1 – urchade/gliner_multi_pii-v1 (Hugging Face), Basis microsoft/mdeberta-v3-base.
+[26] Ollama-Modell chat:latest (Qwen-Architektur, 27,8 Mrd. Parameter) auf dem konfigurierten Host;
+     Test mit gemma4:e2b (lokal) begonnen, wegen Speichermangel abgebrochen.
+
+
+E) NORMEN UND PRÜFVERFAHREN
+---------------------------
+
+[27] DSGVO, Art. 4 Nr. 5 (Pseudonymisierung) und Art. 9 (besondere Kategorien, u. a. Gesundheitsdaten).
+[28] IBAN: ISO 13616, Prüfziffer MOD 97-10 (ISO 7064).
+[29] Kreditkarten: Luhn-Algorithmus (ISO/IEC 7812-1).
+[30] Steuerliche Identifikationsnummer: Prüfziffer nach ISO 7064 MOD 11,10; Ziffernhäufigkeitsregel
+     (Bundeszentralamt für Steuern).
+[31] Rentenversicherungs-/Sozialversicherungsnummer: Prüfziffernverfahren der Deutschen
+     Rentenversicherung (Gewichte 2,1,2,5,7,1,2,1,2,1,2,1, Quersummen).

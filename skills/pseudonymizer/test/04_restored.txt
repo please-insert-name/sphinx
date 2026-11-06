@@ -1,0 +1,133 @@
+VERARBEITUNG VON pseudomized.txt – Zusammenfassungen und Action Points
+====================================================================
+Hinweis: Platzhalter wie Harald Schneider wurden unverändert übernommen und können mit dem
+Pseudonymizer-Skill (restore) auf die Originalwerte zurückgeführt werden.
+
+
+--- Absatz 1: Kundenauftrag Lagerboxen ---------------------------------
+Zusammenfassung:
+Dr. Harald Schneider hat eine Charge Lagerboxen bestellt. Liefertermin ist der 01.12.2026, geliefert
+wird an Harald Schneider GmbH, Winkelgasse 12 in Berlin. Abgerechnet wird über die Visa-Karte 1233 3423 2230 12. Wegen des Alters
+des Kunden (72 Jahre alt) sollen Entladen und Einlagern übernommen werden.
+
+Action Points:
+- Auftrag anlegen und Lieferung zum 01.12.2026 an Harald Schneider GmbH, Winkelgasse 12 in Berlin einplanen.
+- Abrechnung über Visa 1233 3423 2230 12 veranlassen.
+- Zusatzleistung "Entladen und Einlagern" einplanen (Personal/Zeit für den Liefertermin).
+- Bei Rückfragen Herrn Schneider kontaktieren: 0177/3344685 oder sh@harald-schneider-gmbh.de.
+
+
+--- Absatz 2: Korrektur der Gehaltsabrechnung ---------------------------
+Zusammenfassung:
+Die Gehaltsabrechnung für Frau Köhler (Personalnummer 40817) muss korrigiert werden. Das
+Gehalt von 4.250 Euro brutto geht auf das Konto DE89 3704 0044 0532 0130 00 bei der Commerzbank Köln. Frau Köhler ist
+seit dem 02.09 aus gesundheitlichen Gründen (Bandscheiben-OP krankgeschrieben) abwesend.
+
+Action Points:
+- Gehaltsabrechnung für Personalnummer 40817 korrigieren; Steuer-ID 65 929 970 489 und SV-Nummer 12 140388 K 123
+  prüfen.
+- Auszahlung von 4.250 Euro brutto auf DE89 3704 0044 0532 0130 00 sicherstellen.
+- Abwesenheit ab 02.09 in der Abrechnung berücksichtigen (z. B. Entgeltfortzahlung prüfen).
+- Gesundheitsangaben vertraulich behandeln und nur an zuständige Stellen weitergeben (Art. 9 DSGVO).
+
+
+--- Absatz 3: Support-Ticket #48213 – Login-Problem --------------------
+Zusammenfassung:
+Der Kunde Murat Yilmaz kann sich nicht mehr im Kundenportal anmelden (Benutzername myilmaz88).
+Er hat sein Passwort im Ticket im Klartext mitgeteilt. Letzter Login kam von IP 87.123.45.201.
+Der Vertrag hat die Nummer KV-2023-0099142.
+
+Action Points:
+- Zugang zu Benutzer myilmaz88 prüfen (Sperre, abgelaufenes Passwort, Login-Protokoll für
+  87.123.45.201).
+- Passwort-Reset auslösen. Das im Ticket genannte Passwort gilt als kompromittiert und darf nicht
+  weiterverwendet werden.
+- Passwort aus dem Ticketsystem entfernen bzw. schwärzen lassen.
+- Kunden über murat.yilmaz@web.de oder +49 151 23456789 informieren und künftig auf sichere Kanäle hinweisen.
+
+
+--- Absatz 4: Terminbestätigung Arztpraxis -----------------------------
+Zusammenfassung:
+Die Praxis von Dr. Peter Brandt (Allgemeinmedizin) bestätigt Frau Dr. Lena Fuchs einen Termin am
+Dienstag, 17.02.2026, um 10:30 Uhr am Marktplatz 3, 50667 Köln. Sie soll die Unterlagen zur Diabetes-Behandlung und
+einen aktuellen Überweisungsschein mitbringen. Ihre Versichertennummer bei der AOK Rheinland lautet
+A123456789.
+
+Action Points:
+- Termin 17.02.2026, 10:30 Uhr im Praxiskalender für Lena Fuchs eintragen bzw. bestätigt lassen.
+- (Patientin) Unterlagen zur Diabetes-Behandlung und Überweisungsschein mitbringen.
+
+
+--- Absatz 5: Rahmenvertrag Nordlicht Logistik GmbH / Brenner & Söhne KG ---------------------------
+Zusammenfassung:
+Nordlicht Logistik GmbH (Handelsregister Hamburg HRB 123456, vertreten durch Geschäftsführer Jens Hansen) und Brenner & Söhne KG
+(USt-IdNr. DE812345678) schließen einen Rahmenvertrag über ein Auftragsvolumen von 1,2 Mio. Euro pro Jahr.
+Ansprechpartnerin bei Brenner & Söhne KG ist Frau Sabine Brenner.
+
+Action Points:
+- Vertragsentwurf auf Vollständigkeit prüfen (Laufzeit, Konditionen, Kündigung fehlen im Auszug).
+- Unterschriften von Jens Hansen und der Vertretung von Brenner & Söhne KG einholen.
+- Sabine Brenner (Durchwahl 0711 / 998 877-12) als Ansprechpartnerin im CRM hinterlegen.
+
+
+--- Absatz 6: Unfall mit Firmenwagen -----------------------------------
+Zusammenfassung:
+Der Fahrer Tobias Lang hat gestern gegen 16 Uhr mit dem Firmenwagen B-MK 4521 einen Unfall auf der A9
+bei Leipzig verursacht. Es gab keine Verletzten. Die Allianz führt den Schaden unter SC-77-3321908. Sein
+Handy ist beschädigt.
+
+Action Points:
+- Seine Frau Martina Lang unter 030 5557781 informieren (dringend).
+- Schadensmeldung SC-77-3321908 bei der Allianz weiterverfolgen, Unfallbericht und Fotos sammeln.
+- Fuhrparkmanagement informieren: Reparatur/Ersatzfahrzeug für B-MK 4521 organisieren.
+- Ersatzgerät für das beschädigte Diensthandy bereitstellen.
+
+
+--- Absatz 7: Rechnung an Acme Corp (englisch) ----------------------------
+Zusammenfassung:
+Sarah wird gebeten, die Rechnung an John Miller bei Acme Corp, 221B Baker Street, London NW1 6XE zu schicken (PO
+4500123987). Bezahlt wird bis 30. November per PayPal (john.miller.private@gmail.com). John Miller hat einen
+gesundheitlichen Hinweis für das Catering beim Kickoff gegeben (allergic to nuts).
+
+Action Points:
+- Rechnung mit PO-Nummer 4500123987 an j.miller@acmecorp.co.uk senden (Sarah).
+- Zahlungseingang per PayPal bis 30. November überwachen.
+- Catering für den Kickoff entsprechend allergic to nuts anpassen; Information vertraulich behandeln.
+
+
+--- Absatz 8: Protokoll Teammeeting 05.11.2026 --------------------------
+Zusammenfassung:
+Anwesend waren Katrin Vogel (Projektleitung), Ben Weber (Entwicklung) und Ömer Demir (Vertrieb).
+Thema war der Umsatzrückgang im dritten Quartal (8,4 auf 6,9 Mio. Euro). Ben Weber ist bald
+abwesend (im Dezember in Elternzeit). Ein Zugangspasswort für den Server db-prod-01.intern.beispiel-firma.de und ein API-Key
+(sk_live_51Hx9KqLmN0pQrStUvWxYz) wurden offen geteilt.
+
+Action Points:
+- SOFORT: Passwort für db-prod-01.intern.beispiel-firma.de ändern und API-Key sk_live_51Hx9KqLmN0pQrStUvWxYz widerrufen und neu ausstellen.
+- Geteilte Zugangsdaten aus Chat und Protokoll entfernen; Secrets künftig nur über einen
+  Passwortmanager teilen.
+- Vertretung und Übergabe für die Abwesenheit von Ben Weber planen.
+- Ursachen des Umsatzrückgangs analysieren und Maßnahmen ableiten (Verantwortlich: Ömer Demir /
+  Katrin Vogel).
+
+
+--- Absatz 9: Absage einer Bewerbung -----------------------------------
+Zusammenfassung:
+Frau Weiß erhält eine Absage, weil die Stelle bereits besetzt ist. Das Schreiben nennt
+persönliche Merkmale aus dem Lebenslauf (1992, Dresden, alleinerziehend) sowie den
+letzten Arbeitgeber Sachsenbau AG. Die Daten werden nach sechs Monaten gelöscht.
+
+Action Points:
+- Absageschreiben überarbeiten: Persönliche Merkmale wie Geburtsjahr, Herkunft oder Familienstand
+  gehören nicht in eine Absage (AGG- und Diskriminierungsrisiko).
+- Löschung der Bewerbungsdaten in sechs Monaten terminieren.
+
+
+--- Absatz 10: Wetter und Stadtinformationen Hamburg -------------------
+Zusammenfassung:
+Für das Wochenende sind in Hamburg Regen und etwa 8 Grad angesagt. Der Weihnachtsmarkt am
+Rathausplatz öffnet am 24. November. Die Stadtreinigung bittet, Fahrräder nicht an den Zäunen
+abzustellen.
+
+Action Points:
+- Keine (reine Information).

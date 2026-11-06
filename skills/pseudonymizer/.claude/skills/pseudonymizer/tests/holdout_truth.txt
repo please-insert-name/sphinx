@@ -1,0 +1,52 @@
+GROUND TRUTH zu holdout.txt (Hold-out-Set, gleiches Format wie ground_truth.txt)
+Der Skill wurde NICHT auf diese Daten hin optimiert; sie dienen zur Kontrolle der
+Generalisierung.
+
+--- 1 ---------------------------------------------------------------
+[PERSON]   "Prof. Konstantin Albers"
+[ID]       "778-2291"                 (Kundennummer)
+[TELEFON]  "040-87654321"
+[ADRESSE]  "Lindenring 22, 01069 Dresden"
+[PERSON]   "Herr Albers"              (gleiche Entität wie oben)
+[EMAIL]    "k.albers@t-online.de"
+[DATUM]    "morgen"                   (-) relativ, behalten
+
+--- 2 ---------------------------------------------------------------
+[PERSON]      "Jana"                  (!) interne Kollegin, Vorname im Chat-Mention
+[PERSON]      "Felix Ortmann"
+[EMAIL]       "felix.ortmann@posteo.de"
+[CREDENTIAL]  "fortmann"
+[CREDENTIAL]  "Kiwi#2025"
+[GESUNDHEIT]  "Epilepsie"
+[PERSON]      "Petra Ortmann"         (andere Person als Felix Ortmann)
+[TELEFON]     "+49 176 55512340"
+[SONST]       "nach 20 Uhr"           (-) behalten
+
+--- 3 ---------------------------------------------------------------
+[PERSON]      "Emily Clarke"
+[DATUM]       "07/22/1979"            (Geburtsdatum)
+[ORG]         "St. Mary's"            (!) Klinik/Station
+[DATUM]       "on Monday"             (!) Aufnahmetag
+[GESUNDHEIT]  "pneumonia"
+[PERSON]      "Grace Clarke"          (andere Person als Emily Clarke)
+[TELEFON]     "+44 20 7946 0958"
+[ID]          "943 476 5919"          (NHS-Nummer)
+
+--- 4 ---------------------------------------------------------------
+Nichts maskieren.
+(-) "Deutsche Bahn", "München", "Augsburg", "3. März", "120 Züge",
+    "Hauptbahnhof", "www.bahn.de"
+
+--- 5 ---------------------------------------------------------------
+[ORG]         "Meyer Feinmechanik GmbH"
+[PERSON]      "Ilse Meyer"
+[ID]          "RE-2026-1187"          (Rechnungsnummer)
+[GESCHAEFTSZAHL] "23.400 €"           (!) Rechnungsbetrag
+[IBAN]        "DE02 1203 0000 0000 2020 51"
+[SONST]       "Projekt Nordstern"     (!) interner Projektname
+[PERSON]      "Frau Meyer"            (gleiche Entität wie Ilse Meyer)
+[DATUM]       "ab 1. Juni"            (!)
+[GESUNDHEIT]  "Mutterschutz"          (Schwangerschaft = Gesundheitsdatum)
+[PERSON]      "Yusuf Aydın"
+[TELEFON]     "-214"                  (!) Durchwahl-Fragment
+Anmerkung: "Geschäftsführerin" (-) behalten.

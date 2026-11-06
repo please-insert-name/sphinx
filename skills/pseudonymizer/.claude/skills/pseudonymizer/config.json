@@ -1,0 +1,29 @@
+{
+  "placeholder_format": "[{key}]",
+  "types_disabled": [],
+  "ner": {
+    "enabled": true,
+    "model": "urchade/gliner_multi_pii-v1",
+    "threshold": 0.5,
+    "person_accept_threshold": 0.85,
+    "max_chunk_chars": 1000
+  },
+  "llm": {
+    "enabled": true,
+    "host": "http://172.20.1.88:11434",
+    "model": "chat:latest",
+    "think": false,
+    "temperature": 0.0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "timeout": 300,
+    "residual_rounds": 1,
+    "max_chunk_chars": 2500,
+    "required": false
+  },
+  "vault": {
+    "dir": "~/.pseudonymizer/vaults",
+    "passphrase_env": "PSEUDO_VAULT_PASSPHRASE",
+    "ttl_days": 30
+  }
+}
